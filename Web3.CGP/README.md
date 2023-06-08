@@ -9,6 +9,8 @@
 注意:监听的http端口在app.js最后一行配置
 
 ```bash
+npm install
+
 node app.js
 #or
 npm run start

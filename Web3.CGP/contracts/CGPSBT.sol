@@ -1,3 +1,10 @@
+//*************************
+// solidity ^0.8.4;
+// onlyOwner 才能 safeMint
+// safeMint时, 为每一个 tokenId 都可以指定一个 tokenURI
+// 能够销毁 _burn
+//*************************
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
@@ -14,8 +21,8 @@ contract CGPSBT is ERC721, ERC721URIStorage, Ownable {
     constructor() ERC721("CGPSBT", "SBT") {}
 
     function safeMint(address to, string memory uri) public onlyOwner {
-        uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
+        uint256 tokenId = _tokenIdCounter.current();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
     }
@@ -25,7 +32,7 @@ contract CGPSBT is ERC721, ERC721URIStorage, Ownable {
     address to, 
     uint256 tokenId
     ) internal override virtual {
-    require(from == address(0), "Err: token transfer is BLOCKED"); 
+    require(from == address(0), "Err: token transfer is BLOCKED"); //不让交易,这是SBT(灵魂绑定币)
     super._beforeTokenTransfer(from, to, tokenId);  
     }
 
