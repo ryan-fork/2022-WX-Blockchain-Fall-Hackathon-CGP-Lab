@@ -6,7 +6,7 @@ let NFTStorage = require('nft.storage');
 const multer = require('multer')
 const path = require('path')
 var storage = multer.diskStorage({
-  //设置上传后文件路径，uploads文件夹会自动创建。
+  //设置上传后文件路径，upload文件夹得手动事先创建好
   destination: function (req, file, cb) {
     cb(null, './app/upload')
 }, 
@@ -57,7 +57,7 @@ router.post('/', async function(req, res, next) {
       const result = await nftstorage.StoreContent(image, imgFile.originalname, imgFile.filename);
       // console.log(result);
 
-      const URL = `https://ipfs.io/ipfs/${result.ipnft}`; //这是一个文件夹名
+      const URL = `https://ipfs.io/ipfs/${result.ipnft}/metadata.json`; //这是一个文件夹名
       console.log(URL);
       console.log("nft metadata uploaded to IPFS succ !!!");
 

@@ -10,6 +10,7 @@
 
 ```bash
 npm install
+mkdir -p ./app/upload
 
 node app.js
 #or
@@ -25,5 +26,6 @@ curl http://localhost:17171
 ### 上传文件
 
 ```bash
-curl -F 'file=@/mnt/d/Downloads/newnew/icon.jpg' http://127.0.0.1:17171/upload
+curl -F 'file=@<image>' http://127.0.0.1:17171/upload
+curl -F 'file=@/home/wcc/my/blockchain/hackathon/2022-WX-Blockchain-Fall-Hackathon-CGP-Lab/res/image-20220916215557576.png' http://127.0.0.1:17171/upload
 ```
